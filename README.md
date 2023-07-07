@@ -16,13 +16,7 @@ A B X Y Q
 
 The goal of the project is to prove that you know the inputs A=0 and B=1 that yield a 0 output. 
 
-The project includes the following steps:
 
-1. Write a correct  .circom implementation that represents the logical gate.
-2. Compile the circuit using circom to generate circuit intermediaries.
-3. Generate a proof using the inputs A=0 and B=1.
-4. Deploy a solidity verifier contract.
-5. Call the `verifyProof()` method on the verifier contract and assert that the output is true.
 
 ## Getting Started
 
@@ -63,36 +57,32 @@ To run the project, follow these steps:
     ```
    node generate_witness.js multiplier2.wasm input.json witness.wtns
    ```
-9. We are going to use the Groth16 zk-SNARK protocol.
-10. Groth16 requires a per circuit trusted setup. In more detail, the trusted setup consists of 2 parts:
-  * The powers of tau, which is independent of the circuit.
-  * The phase 2, which depends on the circuit.
-    
-9. we generate a .zkey file that will contain the proving and verification keys together.
+
+8. we generate a .zkey file that will contain the proving and verification keys together.
  
   ```
   snarkjs groth16 setup multiplier2.r1cs pot12_final.ptau multiplier2_0000.zkey
   ```
 
-10. Export the verification key:
+9. Export the verification key:
  
   ```
   snarkjs zkey export verificationkey multiplier2_0001.zkey verification_key.json
   ```
 
-11. Generating a Proof:
+10. Generating a Proof:
 
     ```
     snarkjs groth16 prove multiplier2_0001.zkey witness.wtns proof.json public.json
     ```
 
-13. Verifying a Proof
+11. Verifying a Proof
 
     ```
     snarkjs groth16 verify verification_key.json public.json proof.json
     ```
 
-15. Verifying from a Smart Contract:
+12. Verifying from a Smart Contract:
 * Generate the Solidity code (`Verifier.sol`) using the command:
 
   ```
@@ -120,8 +110,5 @@ To run the project, follow these steps:
 
 ## Author 
 
-Abhishek Ranjan
+Tushar Gangurde
 
-## License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
