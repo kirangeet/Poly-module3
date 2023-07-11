@@ -110,5 +110,5 @@ To run the project, follow these steps:
 
 ## Author 
 
-Tushar Gangurde
+Geet Kiran
 
